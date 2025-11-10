@@ -3,15 +3,10 @@
     "main": {
       "type": "main-article",
       "settings": {}
-    },
-    "article_related": {
-      "type": "rich-text",
-      "disabled": true,
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "article_related"
-  ]
+    "main"
+  ],
+  "wrapper": "div.page-width"
 }
