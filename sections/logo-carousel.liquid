@@ -1,0 +1,185 @@
+{% comment %}
+  Sección de Carrusel de Logos - Se mueve de derecha a izquierda
+{% endcomment %}
+
+<section class="px-4 py-16 mx-auto overflow-hidden max-w-7xl" style="background-color: {{ section.settings.background_color }};">
+  {% if section.settings.heading != blank %}
+    <div class="mb-12 text-center">
+      <h2 class="mb-2">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-neutral-600">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="logo-carousel-wrapper">
+    <div class="logo-carousel-track flex items-center gap-12">
+      {% for block in section.blocks %}
+        <div class="logo-item flex-shrink-0" {{ block.shopify_attributes }}>
+          {% if block.settings.logo %}
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" class="block transition-opacity hover:opacity-70">
+            {% endif %}
+            <img 
+              src="{{ block.settings.logo | img_url: '200x' }}" 
+              alt="{{ block.settings.alt_text | escape }}"
+              class="h-{{ section.settings.logo_height }} w-auto object-contain grayscale hover:grayscale-0 transition-all"
+            >
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          {% else %}
+            <div class="flex items-center justify-center w-32 h-16 bg-neutral-100 rounded">
+              <svg class="w-8 h-8 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+      
+      <!-- Duplicamos para efecto infinito -->
+      {% for block in section.blocks %}
+        <div class="logo-item flex-shrink-0">
+          {% if block.settings.logo %}
+            {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}" class="block transition-opacity hover:opacity-70">
+            {% endif %}
+            <img 
+              src="{{ block.settings.logo | img_url: '200x' }}" 
+              alt="{{ block.settings.alt_text | escape }}"
+              class="h-{{ section.settings.logo_height }} w-auto object-contain grayscale hover:grayscale-0 transition-all"
+            >
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          {% else %}
+            <div class="flex items-center justify-center w-32 h-16 bg-neutral-100 rounded">
+              <svg class="w-8 h-8 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-carousel-track {
+    display: inline-flex;
+    animation: scroll-logos {{ section.settings.scroll_speed }}s linear infinite;
+    animation-direction: reverse;
+  }
+
+  @keyframes scroll-logos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .logo-carousel-wrapper:hover .logo-carousel-track {
+    animation-play-state: paused;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Carrusel de Logos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Marcas Destacadas"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "label": "Altura de logos (en unidades)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Velocidad de desplazamiento",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Texto alternativo"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carrusel de Logos",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

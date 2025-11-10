@@ -1,0 +1,78 @@
+{% comment %}
+  Sección de Grid de Productos para Colecciones
+{% endcomment %}
+
+{% paginate collection.products by section.settings.products_per_page %}
+  <div class="px-4 pb-16 mx-auto max-w-7xl">
+    {% if collection.products.size > 0 %}
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {% for product in collection.products %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      </div>
+
+      {% if paginate.pages > 1 %}
+        <div class="flex justify-center gap-2 mt-12">
+          {% if paginate.previous %}
+            <a 
+              href="{{ paginate.previous.url }}" 
+              class="px-4 py-2 border rounded-lg border-neutral-300 hover:border-neutral-900"
+            >
+              Anterior
+            </a>
+          {% endif %}
+          
+          {% for part in paginate.parts %}
+            {% if part.is_link %}
+              <a 
+                href="{{ part.url }}" 
+                class="px-4 py-2 border rounded-lg border-neutral-300 hover:border-neutral-900"
+              >
+                {{ part.title }}
+              </a>
+            {% else %}
+              <span class="px-4 py-2 text-white bg-black border border-black rounded-lg">
+                {{ part.title }}
+              </span>
+            {% endif %}
+          {% endfor %}
+          
+          {% if paginate.next %}
+            <a 
+              href="{{ paginate.next.url }}" 
+              class="px-4 py-2 border rounded-lg border-neutral-300 hover:border-neutral-900"
+            >
+              Siguiente
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="py-16 text-center">
+        <p class="text-neutral-600">No hay productos en esta colección.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endpaginate %}
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 50,
+      "step": 4,
+      "label": "Productos por página",
+      "default": 12
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

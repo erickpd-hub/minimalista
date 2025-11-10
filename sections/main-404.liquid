@@ -1,0 +1,45 @@
+{% comment %}
+  Sección Principal de 404
+{% endcomment %}
+
+<div class="px-4 py-24 mx-auto text-center max-w-4xl">
+  <div class="mb-8">
+    <svg class="w-32 h-32 mx-auto text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+  </div>
+  
+  <h1 class="mb-4">404 - Página No Encontrada</h1>
+  
+  <p class="mb-8 text-neutral-600">
+    Lo sentimos, la página que buscas no existe o ha sido movida.
+  </p>
+  
+  <div class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+    <a 
+      href="/" 
+      class="px-6 py-3 text-white bg-black rounded-lg hover:bg-neutral-800"
+    >
+      Volver al Inicio
+    </a>
+    
+    <a 
+      href="{{ routes.all_products_collection_url }}" 
+      class="px-6 py-3 border rounded-lg border-neutral-300 hover:border-neutral-900"
+    >
+      Ver Productos
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main 404",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main 404"
+    }
+  ]
+}
+{% endschema %}

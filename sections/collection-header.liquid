@@ -1,0 +1,64 @@
+{% comment %}
+  Sección de Header de Colección
+{% endcomment %}
+
+<div class="px-4 py-16 mx-auto max-w-7xl">
+  <div class="mb-12">
+    <h1 class="mb-2">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <p class="text-neutral-600">{{ collection.description }}</p>
+    {% endif %}
+  </div>
+
+  {% if section.settings.enable_sorting or section.settings.enable_filtering %}
+    <div class="flex flex-wrap items-center gap-4 mb-8">
+      {% if section.settings.enable_sorting %}
+        <div class="flex items-center gap-2">
+          <label for="SortBy" class="text-neutral-600">Ordenar por:</label>
+          <select 
+            id="SortBy" 
+            class="px-4 py-2 border rounded-lg border-neutral-300 focus:border-neutral-900 focus:outline-none"
+            onchange="location.href = this.value"
+          >
+            <option value="{{ collection.url }}?sort_by=manual">Destacados</option>
+            <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Más vendidos</option>
+            <option value="{{ collection.url }}?sort_by=title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+            <option value="{{ collection.url }}?sort_by=title-descending" {% if collection.sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
+            <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Precio: Menor a Mayor</option>
+            <option value="{{ collection.url }}?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Precio: Mayor a Menor</option>
+            <option value="{{ collection.url }}?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Más recientes</option>
+          </select>
+        </div>
+      {% endif %}
+
+      <div class="ml-auto text-neutral-600">
+        {{ collection.products_count }} productos
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "Habilitar ordenamiento",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "Habilitar filtros",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Header"
+    }
+  ]
+}
+{% endschema %}

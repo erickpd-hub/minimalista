@@ -1,0 +1,25 @@
+{% comment %}
+  Sección Principal de Página
+{% endcomment %}
+
+<div class="px-4 py-16 mx-auto max-w-4xl">
+  <h1 class="mb-8">{{ page.title }}</h1>
+  
+  {% if page.content != blank %}
+    <div class="prose max-w-none text-neutral-600">
+      {{ page.content }}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Page"
+    }
+  ]
+}
+{% endschema %}

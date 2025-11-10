@@ -1,0 +1,215 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "TechStore",
+    "theme_version": "1.0.0",
+    "theme_author": "TechStore",
+    "theme_documentation_url": "https://techstore.com/docs",
+    "theme_support_url": "https://techstore.com/support"
+  },
+  {
+    "name": "Colores",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Colores del tema"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Color primario",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Color secundario",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Color de texto",
+        "default": "#171717"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Color de fondo",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Color de acento",
+        "default": "#000000"
+      }
+    ]
+  },
+  {
+    "name": "Tipografía",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fuentes"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Fuente de encabezados",
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Fuente del cuerpo",
+        "default": "helvetica_n4"
+      }
+    ]
+  },
+  {
+    "name": "Logo y Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Ancho máximo del logo",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Redes Sociales",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Enlaces de redes sociales"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter",
+        "info": "https://twitter.com/tutienda"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook",
+        "info": "https://facebook.com/tutienda"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/tutienda"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "YouTube",
+        "info": "https://youtube.com/tutienda"
+      }
+    ]
+  },
+  {
+    "name": "Carrito",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Tipo de carrito",
+        "options": [
+          {
+            "value": "page",
+            "label": "Página"
+          },
+          {
+            "value": "drawer",
+            "label": "Drawer (lateral)"
+          }
+        ],
+        "default": "page"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Habilitar notas del carrito",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Productos",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Configuración de productos"
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_vendor",
+        "label": "Mostrar proveedor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "product_show_sku",
+        "label": "Mostrar SKU",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "product_image_ratio",
+        "label": "Proporción de imagen",
+        "options": [
+          {
+            "value": "square",
+            "label": "Cuadrado (1:1)"
+          },
+          {
+            "value": "portrait",
+            "label": "Retrato (3:4)"
+          },
+          {
+            "value": "landscape",
+            "label": "Paisaje (4:3)"
+          }
+        ],
+        "default": "square"
+      }
+    ]
+  },
+  {
+    "name": "SEO",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Optimización para motores de búsqueda"
+      },
+      {
+        "type": "text",
+        "id": "seo_title",
+        "label": "Título SEO de la página principal"
+      },
+      {
+        "type": "textarea",
+        "id": "seo_description",
+        "label": "Descripción SEO de la página principal"
+      }
+    ]
+  }
+]

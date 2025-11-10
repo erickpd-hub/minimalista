@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "collection_header": {
+      "type": "collection-header",
+      "settings": {
+        "enable_sorting": true,
+        "enable_filtering": false
+      }
+    },
+    "product_grid": {
+      "type": "product-grid",
+      "settings": {
+        "products_per_page": 12
+      }
+    }
+  },
+  "order": [
+    "collection_header",
+    "product_grid"
+  ]
+}

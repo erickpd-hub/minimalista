@@ -1,0 +1,105 @@
+{% comment %}
+  Sección de Preguntas Frecuentes (FAQs)
+{% endcomment %}
+
+<section class="px-4 py-16 mx-auto max-w-4xl" style="background-color: {{ section.settings.background_color }};">
+  {% if section.settings.heading != blank %}
+    <div class="mb-12 text-center">
+      <h2 class="mb-2">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-neutral-600">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="space-y-4">
+    {% for block in section.blocks %}
+      <div class="border rounded-lg border-neutral-200" {{ block.shopify_attributes }}>
+        <button 
+          class="faq-question flex items-center justify-between w-full p-4 text-left transition-colors hover:bg-neutral-50"
+          onclick="toggleFAQ(this)"
+        >
+          <span>{{ block.settings.question }}</span>
+          <svg class="w-5 h-5 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="faq-answer hidden px-4 pb-4 text-neutral-600">
+          {{ block.settings.answer }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  function toggleFAQ(button) {
+    const answer = button.nextElementSibling;
+    const icon = button.querySelector('.faq-icon');
+    
+    answer.classList.toggle('hidden');
+    icon.style.transform = answer.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Preguntas Frecuentes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Preguntas Frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo",
+      "default": "¿Tienes dudas? Te ayudamos"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Pregunta",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "¿Cuál es el tiempo de envío?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "<p>El tiempo de envío varía entre 3-5 días hábiles dentro del país.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Preguntas Frecuentes",
+      "blocks": [
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

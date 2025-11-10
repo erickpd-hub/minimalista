@@ -1,0 +1,154 @@
+{% comment %}
+  Sección de Barra de Anuncios - Se mueve de derecha a izquierda
+{% endcomment %}
+
+{% if section.settings.show_announcement %}
+  <div class="w-full overflow-hidden" style="background-color: {{ section.settings.background_color }};">
+    <div class="announcement-bar-scroll py-2">
+      <div class="announcement-bar-content flex items-center gap-8 whitespace-nowrap">
+        {% for block in section.blocks %}
+          <div class="flex items-center gap-2" {{ block.shopify_attributes }}>
+            {% if block.settings.icon %}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: {{ section.settings.text_color }};">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            {% endif %}
+            <a 
+              href="{{ block.settings.link }}" 
+              class="transition-opacity hover:opacity-80"
+              style="color: {{ section.settings.text_color }};"
+            >
+              {{ block.settings.text }}
+            </a>
+          </div>
+          
+          <!-- Duplicado para efecto continuo -->
+          <div class="flex items-center gap-2">
+            {% if block.settings.icon %}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: {{ section.settings.text_color }};">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            {% endif %}
+            <a 
+              href="{{ block.settings.link }}" 
+              class="transition-opacity hover:opacity-80"
+              style="color: {{ section.settings.text_color }};"
+            >
+              {{ block.settings.text }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .announcement-bar-scroll {
+      position: relative;
+    }
+
+    .announcement-bar-content {
+      display: inline-flex;
+      animation: scroll-left {{ section.settings.scroll_speed }}s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .announcement-bar-scroll:hover .announcement-bar-content {
+      animation-play-state: paused;
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Barra de Anuncios",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Mostrar barra de anuncios",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de texto",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Velocidad de desplazamiento",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Anuncio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto",
+          "default": "🔥 Envío gratis en compras mayores a $100"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        },
+        {
+          "type": "checkbox",
+          "id": "icon",
+          "label": "Mostrar icono",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Barra de Anuncios",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "🔥 Envío gratis en compras mayores a $100"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "⚡ Hasta 30% OFF en componentes seleccionados"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "💎 Garantía extendida en todos los productos"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

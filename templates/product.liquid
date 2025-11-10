@@ -1,0 +1,16 @@
+{% comment %}
+  Este archivo es respaldo. Shopify 2.0 usa product.json
+{% endcomment %}
+
+{% section 'product-info' %}
+
+<div class="px-4 py-16 mx-auto max-w-7xl">
+  {% if product.description != blank %}
+    <div class="max-w-3xl mx-auto">
+      <h2 class="mb-6">Descripción</h2>
+      <div class="prose text-neutral-600">
+        {{ product.description }}
+      </div>
+    </div>
+  {% endif %}
+</div>

@@ -1,0 +1,125 @@
+{% comment %}
+  Sección de Galería de Videos
+{% endcomment %}
+
+<section class="px-4 py-16 mx-auto max-w-7xl" style="background-color: {{ section.settings.background_color }};">
+  {% if section.settings.heading != blank %}
+    <div class="mb-12 text-center">
+      <h2 class="mb-2">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-neutral-600">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-{{ section.settings.columns }}">
+    {% for block in section.blocks %}
+      <div class="overflow-hidden border rounded-lg border-neutral-200" {{ block.shopify_attributes }}>
+        <div class="relative aspect-video bg-neutral-100">
+          {% if block.settings.video_url != blank %}
+            {% assign video_id = block.settings.video_url | split: 'v=' | last | split: '&' | first %}
+            {% if block.settings.video_url contains 'youtube.com' or block.settings.video_url contains 'youtu.be' %}
+              <iframe 
+                src="https://www.youtube.com/embed/{{ video_id }}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="w-full h-full"
+              ></iframe>
+            {% elsif block.settings.video_url contains 'vimeo.com' %}
+              {% assign vimeo_id = block.settings.video_url | split: '/' | last %}
+              <iframe 
+                src="https://player.vimeo.com/video/{{ vimeo_id }}" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen
+                class="w-full h-full"
+              ></iframe>
+            {% endif %}
+          {% else %}
+            <div class="flex items-center justify-center w-full h-full">
+              <svg class="w-16 h-16 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+        
+        {% if block.settings.title != blank or block.settings.description != blank %}
+          <div class="p-4">
+            {% if block.settings.title != blank %}
+              <h3 class="mb-2">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <p class="text-neutral-600">{{ block.settings.description }}</p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Galería de Videos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Videos"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "label": "Columnas en desktop",
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "URL del video (YouTube o Vimeo)",
+          "info": "Pega la URL completa del video"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descripción"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Galería de Videos"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+{% comment %}
+  Snippet de Tarjeta de Producto
+  Uso: {% render 'product-card', product: product %}
+{% endcomment %}
+
+<div class="flex flex-col overflow-hidden transition-all bg-white border rounded-lg border-neutral-200 hover:shadow-lg group">
+  <a href="{{ product.url }}" class="relative block overflow-hidden bg-neutral-50 aspect-square">
+    {% if product.featured_image %}
+      <img 
+        src="{{ product.featured_image | img_url: '500x500' }}" 
+        alt="{{ product.title | escape }}"
+        class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      >
+    {% else %}
+      <div class="flex items-center justify-center w-full h-full bg-neutral-100">
+        <svg class="w-16 h-16 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+        </svg>
+      </div>
+    {% endif %}
+
+    {% unless product.available %}
+      <div class="absolute top-2 right-2 px-3 py-1 text-xs text-white bg-neutral-900 rounded-full">
+        Agotado
+      </div>
+    {% endunless %}
+
+    {% if product.compare_at_price > product.price %}
+      <div class="absolute top-2 left-2 px-3 py-1 text-xs text-white bg-red-600 rounded-full">
+        Oferta
+      </div>
+    {% endif %}
+  </a>
+  
+  <div class="flex flex-col flex-1 p-4">
+    <h3 class="mb-2 line-clamp-2">
+      <a href="{{ product.url }}" class="hover:underline">
+        {{ product.title }}
+      </a>
+    </h3>
+    
+    {% if product.metafields.custom.specs != blank %}
+      <ul class="mb-4 space-y-1">
+        {% assign specs = product.metafields.custom.specs | split: '|' %}
+        {% for spec in specs limit: 3 %}
+          <li class="text-neutral-600">{{ spec }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    
+    <div class="flex items-end justify-between mt-auto">
+      <div class="flex flex-col">
+        <span class="text-neutral-900">
+          {{ product.price | money }}
+        </span>
+        {% if product.compare_at_price > product.price %}
+          <span class="text-neutral-500 line-through">
+            {{ product.compare_at_price | money }}
+          </span>
+        {% endif %}
+      </div>
+      
+      <button 
+        class="flex items-center gap-2 px-4 py-2 text-white transition-colors bg-black rounded-lg hover:bg-neutral-800 disabled:bg-neutral-300"
+        onclick="addToCart({{ product.variants.first.id }})"
+        {% unless product.available %}disabled{% endunless %}
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        Agregar
+      </button>
+    </div>
+  </div>
+</div>

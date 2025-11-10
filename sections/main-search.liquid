@@ -1,0 +1,68 @@
+{% comment %}
+  Sección Principal de Búsqueda
+{% endcomment %}
+
+<div class="px-4 py-16 mx-auto max-w-7xl">
+  <div class="mb-12">
+    <h1 class="mb-6">Búsqueda</h1>
+    
+    <form action="{{ routes.search_url }}" method="get" class="max-w-2xl">
+      <div class="flex gap-2">
+        <input 
+          type="search" 
+          name="q" 
+          value="{{ search.terms | escape }}"
+          placeholder="Buscar productos..."
+          class="flex-1 px-4 py-3 border rounded-lg border-neutral-300 focus:border-neutral-900 focus:outline-none"
+          autofocus
+        >
+        <button 
+          type="submit"
+          class="px-6 py-3 text-white bg-black rounded-lg hover:bg-neutral-800"
+        >
+          Buscar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  {% if search.performed %}
+    {% if search.results_count > 0 %}
+      <div class="mb-8">
+        <p class="text-neutral-600">
+          Se encontraron {{ search.results_count }} resultados para "{{ search.terms }}"
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {% for item in search.results %}
+          {% if item.object_type == 'product' %}
+            {% render 'product-card', product: item %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="py-16 text-center">
+        <svg class="w-16 h-16 mx-auto mb-4 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <h2 class="mb-4">No se encontraron resultados</h2>
+        <p class="text-neutral-600">
+          No encontramos ningún resultado para "{{ search.terms }}". Intenta con otros términos.
+        </p>
+      </div>
+    {% endif %}
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Main Search",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main Search"
+    }
+  ]
+}
+{% endschema %}

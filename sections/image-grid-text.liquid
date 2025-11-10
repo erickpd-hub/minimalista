@@ -1,0 +1,145 @@
+{% comment %}
+  Sección de Grid de Imágenes con Texto
+{% endcomment %}
+
+<section class="px-4 py-16 mx-auto max-w-7xl" style="background-color: {{ section.settings.background_color }};">
+  {% if section.settings.heading != blank %}
+    <div class="mb-12 text-center">
+      <h2 class="mb-2">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="text-neutral-600">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-{{ section.settings.columns }}">
+    {% for block in section.blocks %}
+      <div class="flex flex-col overflow-hidden transition-all bg-white border rounded-lg border-neutral-200 hover:shadow-lg" {{ block.shopify_attributes }}>
+        {% if block.settings.image %}
+          <div class="overflow-hidden aspect-video bg-neutral-50">
+            <img 
+              src="{{ block.settings.image | img_url: '600x400' }}" 
+              alt="{{ block.settings.title | escape }}"
+              class="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+            >
+          </div>
+        {% else %}
+          <div class="flex items-center justify-center bg-neutral-100 aspect-video">
+            <svg class="w-16 h-16 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+        {% endif %}
+        
+        <div class="flex flex-col flex-1 p-6">
+          {% if block.settings.title != blank %}
+            <h3 class="mb-3">{{ block.settings.title }}</h3>
+          {% endif %}
+          
+          {% if block.settings.text != blank %}
+            <div class="mb-4 text-neutral-600">
+              {{ block.settings.text }}
+            </div>
+          {% endif %}
+          
+          {% if block.settings.button_text != blank %}
+            <a 
+              href="{{ block.settings.button_link }}" 
+              class="inline-flex items-center gap-2 mt-auto text-neutral-900 hover:gap-3 transition-all"
+            >
+              {{ block.settings.button_text }}
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grid de Imágenes con Texto",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título",
+      "default": "Características"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subtítulo"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Columnas en desktop",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Título del Item"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texto",
+          "default": "<p>Descripción del item.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Texto del botón"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Enlace del botón"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Grid de Imágenes con Texto",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "product_info": {
+      "type": "product-info",
+      "settings": {
+        "enable_quantity_selector": true
+      }
+    }
+  },
+  "order": [
+    "product_info"
+  ]
+}
