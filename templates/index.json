@@ -97,5 +97,6 @@
     "hero",
     "categories",
     "featured_products"
-  ]
+  ],
+  "wrapper": "div.page-width"
 }

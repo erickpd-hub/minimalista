@@ -3,15 +3,10 @@
     "main": {
       "type": "main-list-collections",
       "settings": {}
-    },
-    "rich_text": {
-      "type": "rich-text",
-      "disabled": true,
-      "settings": {}
     }
   },
   "order": [
-    "main",
-    "rich_text"
-  ]
+    "main"
+  ],
+  "wrapper": "div.page-width"
 }
