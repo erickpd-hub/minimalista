@@ -1,102 +1,18 @@
 {
   "sections": {
     "hero": {
-      "type": "hero",
-      "settings": {
-        "heading": "Construye tu PC ideal",
-        "subheading": "Componentes de última generación y computadoras armadas para gaming, diseño y productividad. Calidad garantizada y envío rápido.",
-        "button_text": "Ver productos",
-        "button_link": "/collections/all",
-        "button_color": "#000000",
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "show_gradient": true,
-        "image_opacity": 1,
-        "overlay_opacity": 0
-      }
+      "type": "hero"
     },
     "categories": {
-      "type": "categories",
-      "blocks": {
-        "category_1": {
-          "type": "category",
-          "settings": {
-            "title": "PC Armadas",
-            "link": "/collections/pc-armadas",
-            "icon_name": "pc"
-          }
-        },
-        "category_2": {
-          "type": "category",
-          "settings": {
-            "title": "Procesadores",
-            "link": "/collections/procesadores",
-            "icon_name": "cpu"
-          }
-        },
-        "category_3": {
-          "type": "category",
-          "settings": {
-            "title": "Memoria RAM",
-            "link": "/collections/memoria-ram",
-            "icon_name": "memory"
-          }
-        },
-        "category_4": {
-          "type": "category",
-          "settings": {
-            "title": "Gráficas",
-            "link": "/collections/graficas",
-            "icon_name": "gpu"
-          }
-        },
-        "category_5": {
-          "type": "category",
-          "settings": {
-            "title": "SSD",
-            "link": "/collections/almacenamiento",
-            "icon_name": "hdd"
-          }
-        },
-        "category_6": {
-          "type": "category",
-          "settings": {
-            "title": "Gabinetes",
-            "link": "/collections/gabinetes",
-            "icon_name": "case"
-          }
-        }
-      },
-      "block_order": [
-        "category_1",
-        "category_2",
-        "category_3",
-        "category_4",
-        "category_5",
-        "category_6"
-      ],
-      "settings": {
-        "heading": "Categorías",
-        "subheading": "Encuentra los componentes perfectos para tu build",
-        "background_color": "#f5f5f5"
-      }
+      "type": "categories"
     },
     "featured_products": {
-      "type": "featured-products",
-      "settings": {
-        "heading": "Productos Destacados",
-        "subheading": "Los mejores componentes para tu setup",
-        "collection": "",
-        "products_to_show": 8,
-        "show_view_all": true,
-        "background_color": "#ffffff"
-      }
+      "type": "featured-products"
     }
   },
   "order": [
     "hero",
     "categories",
     "featured_products"
-  ],
-  "wrapper": "div.page-width"
+  ]
 }
