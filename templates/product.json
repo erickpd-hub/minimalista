@@ -5,9 +5,15 @@
       "settings": {
         "enable_quantity_selector": true
       }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
-    "product_info"
+    "product_info",
+    "rich_text"
   ]
 }

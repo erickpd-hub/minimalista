@@ -3,9 +3,15 @@
     "main": {
       "type": "main-article",
       "settings": {}
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "rich_text"
   ]
 }

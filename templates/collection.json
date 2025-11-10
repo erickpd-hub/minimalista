@@ -12,10 +12,16 @@
       "settings": {
         "products_per_page": 12
       }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
     "collection_header",
-    "product_grid"
+    "product_grid",
+    "rich_text"
   ]
 }
