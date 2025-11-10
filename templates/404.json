@@ -3,10 +3,15 @@
     "main": {
       "type": "main-404",
       "settings": {}
+    },
+    "404_additional": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
-    "main"
-  ],
-  "wrapper": "div.page-width"
+    "main",
+    "404_additional"
+  ]
 }

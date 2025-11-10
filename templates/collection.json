@@ -17,6 +17,5 @@
   "order": [
     "collection_header",
     "product_grid"
-  ],
-  "wrapper": "div.page-width"
+  ]
 }

@@ -3,10 +3,15 @@
     "main": {
       "type": "main-blog",
       "settings": {}
+    },
+    "blog_sidebar": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
-    "main"
-  ],
-  "wrapper": "div.page-width"
+    "main",
+    "blog_sidebar"
+  ]
 }

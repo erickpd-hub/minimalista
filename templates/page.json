@@ -3,10 +3,15 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "additional_content": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
-    "main"
-  ],
-  "wrapper": "div.page-width"
+    "main",
+    "additional_content"
+  ]
 }
