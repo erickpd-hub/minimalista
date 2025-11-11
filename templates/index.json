@@ -1,8 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "image_opacity": 1,
+        "overlay_opacity": 0,
         "heading": "Construye tu PC ideal",
         "subheading": "Componentes de última generación y computadoras armadas para gaming, diseño y productividad. Calidad garantizada y envío rápido.",
         "button_text": "Ver productos",
@@ -10,9 +21,7 @@
         "button_color": "#000000",
         "background_color": "#ffffff",
         "text_color": "#000000",
-        "show_gradient": true,
-        "image_opacity": 1,
-        "overlay_opacity": 0
+        "show_gradient": true
       }
     },
     "categories": {
@@ -91,11 +100,26 @@
         "show_view_all": true,
         "background_color": "#ffffff"
       }
+    },
+    "countdown_timer_BTj3PA": {
+      "type": "countdown-timer",
+      "name": "Contador Regresivo",
+      "settings": {
+        "heading": "Oferta por Tiempo Limitado",
+        "subheading": "¡Apúrate! La oferta termina pronto",
+        "end_date": "2025-12-30 22:15:59",
+        "button_text": "Comprar Ahora",
+        "button_link": "",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "button_color": "#8c8c8c"
+      }
     }
   },
   "order": [
     "hero",
     "categories",
-    "featured_products"
+    "featured_products",
+    "countdown_timer_BTj3PA"
   ]
 }
