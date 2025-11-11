@@ -1,0 +1,167 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "background_color": "#000000",
+          "text_color": "#ffffff",
+          "scroll_speed": 30
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "site_name": "TechStore",
+          "menu": "main-menu"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "settings": {
+          "background_image": "shopify://shop_images/photo-1603481588273-2f908a9a7a1b.jpg",
+          "image_opacity": 1,
+          "overlay_opacity": 0,
+          "heading": "Construye tu PC ideal",
+          "subheading": "Componentes de última generación y computadoras armadas para gaming, diseño y productividad. Calidad garantizada y envío rápido.",
+          "button_text": "Ver productos",
+          "button_link": "",
+          "button_color": "#000000",
+          "background_color": "#ffffff",
+          "text_color": "#ffffff",
+          "show_gradient": true
+        }
+      },
+      "categories": {
+        "type": "categories",
+        "blocks": {
+          "category_FqLqFt": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          },
+          "category_QtfckK": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          },
+          "category_gKaa9U": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          },
+          "category_h37Ub9": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          },
+          "category_7UgecF": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          },
+          "category_WygN4D": {
+            "type": "category",
+            "settings": {
+              "title": "Categoría",
+              "link": "",
+              "icon_name": "cpu"
+            }
+          }
+        },
+        "block_order": [
+          "category_FqLqFt",
+          "category_QtfckK",
+          "category_gKaa9U",
+          "category_h37Ub9",
+          "category_7UgecF",
+          "category_WygN4D"
+        ],
+        "settings": {
+          "heading": "Categorías",
+          "subheading": "Encuentra los componentes perfectos para tu build",
+          "background_color": "#f5f5f5"
+        }
+      },
+      "featured-products": {
+        "type": "featured-products",
+        "settings": {
+          "heading": "Productos Destacados",
+          "subheading": "Los mejores componentes para tu setup",
+          "collection": "automated-collection",
+          "products_to_show": 8,
+          "show_view_all": true,
+          "background_color": "#ffffff"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "menu",
+            "settings": {
+              "heading": "Enlaces",
+              "menu": "footer"
+            }
+          },
+          "footer-1": {
+            "type": "menu",
+            "settings": {
+              "heading": "Enlaces",
+              "menu": "footer"
+            }
+          },
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "",
+              "text": ""
+            }
+          },
+          "footer-3": {
+            "type": "newsletter",
+            "settings": {
+              "heading": "Newsletter",
+              "text": "Recibe nuestras últimas ofertas y novedades"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2",
+          "footer-3"
+        ],
+        "settings": {
+          "show_payment_icons": true
+        }
+      }
+    },
+    "content_for_index": []
+  }
+}

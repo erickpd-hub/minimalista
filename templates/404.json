@@ -1,12 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-404",
+      "disabled": true,
       "settings": {}
+    },
+    "categories_W9LXRJ": {
+      "type": "categories",
+      "blocks": {
+        "category_mw3mhy": {
+          "type": "category",
+          "settings": {
+            "title": "PC Armadas",
+            "link": "",
+            "icon_name": "pc"
+          }
+        },
+        "category_EFP7NY": {
+          "type": "category",
+          "settings": {
+            "title": "Procesadores",
+            "link": "",
+            "icon_name": "cpu"
+          }
+        },
+        "category_wiMJPk": {
+          "type": "category",
+          "settings": {
+            "title": "Memoria RAM",
+            "link": "",
+            "icon_name": "memory"
+          }
+        },
+        "category_PRR4xx": {
+          "type": "category",
+          "settings": {
+            "title": "Gráficas",
+            "link": "",
+            "icon_name": "gpu"
+          }
+        },
+        "category_LWbtDP": {
+          "type": "category",
+          "settings": {
+            "title": "SSD",
+            "link": "",
+            "icon_name": "hdd"
+          }
+        },
+        "category_6Mx9nF": {
+          "type": "category",
+          "settings": {
+            "title": "Gabinetes",
+            "link": "",
+            "icon_name": "case"
+          }
+        }
+      },
+      "block_order": [
+        "category_mw3mhy",
+        "category_EFP7NY",
+        "category_wiMJPk",
+        "category_PRR4xx",
+        "category_LWbtDP",
+        "category_6Mx9nF"
+      ],
+      "name": "Categorías",
+      "settings": {
+        "heading": "Categorías",
+        "subheading": "Encuentra los componentes perfectos para tu build",
+        "background_color": "#f5f5f5"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "categories_W9LXRJ"
   ],
   "wrapper": "div.page-width"
 }
